@@ -1,0 +1,4 @@
+#ifndef MINLIBC_SYS_UTSNAME_H
+#define MINLIBC_SYS_UTSNAME_H
+
+#endif
