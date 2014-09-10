@@ -1,14 +1,15 @@
-/* 
+/*
  * Copyright (C) 2014, Galois, Inc.
  * This sotware is distributed under a standard, three-clause BSD license.
  * Please see the file LICENSE, distributed with this software, for specific
  * terms and conditions.
  */
-#ifndef MINLIBC_CTYPE_H
-#define MINLIBC_CTYPE_H
+#include <ctype.h>
 
-int isdigit(int c);
-int isspace(int c);
-int tolower(int c);
-
-#endif
+int tolower(int c)
+{
+  if (c >= 'A' && c <= 'Z')
+    return c - 'A';
+  else
+    return c;
+}

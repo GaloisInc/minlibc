@@ -4,11 +4,13 @@
  * Please see the file LICENSE, distributed with this software, for specific
  * terms and conditions.
  */
-#ifndef MINLIBC_CTYPE_H
-#define MINLIBC_CTYPE_H
+#ifndef MINLIBC_SYS_SOCKET_H
+#define MINLIBC_SYS_SOCKET_H
 
-int isdigit(int c);
-int isspace(int c);
-int tolower(int c);
+#define PF_INET    2
+#define PF_INET6   10
+
+#define AF_INET    PF_INET
+#define AF_INET6   PF_INET6
 
 #endif

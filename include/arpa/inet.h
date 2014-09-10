@@ -4,11 +4,8 @@
  * Please see the file LICENSE, distributed with this software, for specific
  * terms and conditions.
  */
-#ifndef MINLIBC_CTYPE_H
-#define MINLIBC_CTYPE_H
+#ifndef MINLIBC_ARPA_INET_H
+#define MINLIBC_ARPA_INET_H
 
-int isdigit(int c);
-int isspace(int c);
-int tolower(int c);
 
 #endif

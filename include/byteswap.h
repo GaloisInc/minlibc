@@ -4,11 +4,14 @@
  * Please see the file LICENSE, distributed with this software, for specific
  * terms and conditions.
  */
-#ifndef MINLIBC_CTYPE_H
-#define MINLIBC_CTYPE_H
+#ifndef MINLIBC_BYTESWAP_H
+#define MINLIBC_BYTESWAP_H
 
-int isdigit(int c);
-int isspace(int c);
-int tolower(int c);
+#include <endian.h>
+
+/* glibc compatibility definitions */
+#define bswap_16(x) __bswap_16(x)
+#define bswap_32(x) __bswap_32(x)
+#define bswap_64(x) __bswap_64(x)
 
 #endif

@@ -26,4 +26,19 @@ typedef signed         int  intptr_t;
 typedef unsigned       int  uintptr_t;
 #endif
 
+#define INT8_MIN    (-0x7f - 1)
+#define INT16_MIN   (-0x7fff - 1)
+#define INT32_MIN   (-0x7fffffff - 1)
+#define INT64_MIN   (-0x7fffffffffffffffLL - 1)
+
+#define INT8_MAX    0x7f
+#define INT16_MAX   0x7fff
+#define INT32_MAX   0x7fffffff
+#define INT64_MAX   0x7fffffffffffffffLL
+
+#define UINT8_MAX   0xff
+#define UINT16_MAX  0xffff
+#define UINT32_MAX  0xffffffffU
+#define UINT64_MAX  0xffffffffffffffffULL
+
 #endif
