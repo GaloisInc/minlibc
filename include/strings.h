@@ -10,5 +10,6 @@
 #include <sys/types.h>
 
 void bzero(void *s, size_t n);
+int strcasecmp(const char *s1, const char *s2);
 
 #endif
