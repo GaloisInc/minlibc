@@ -16,5 +16,6 @@ int select(int nfds, fd_set *readfds, fd_set *writefds,
 
 #define FD_SET(x,y) /* */
 #define FD_ZERO(x) /* */
+#define FD_SETSIZE 1024
 
 #endif
