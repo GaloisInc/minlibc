@@ -10,6 +10,10 @@
 
 #define MINLIBC_STDIO_H
 
+#ifndef NULL
+#define NULL 0
+#endif
+
 #define BUFSIZ      8192
 #define EOF         (-1)
 
