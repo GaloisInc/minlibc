@@ -36,10 +36,21 @@ struct tm {
   const char *tm_zone;
 };
 
-
 time_t     time(time_t *tloc);
 char      *ctime_r(const time_t *timep, char *buf);
 struct tm *localtime_r(const time_t *timep, struct tm *result);
 void       tzset(void);
+
+typedef long int slong_t;
+
+struct timespec {
+  time_t tv_sec;
+  slong_t tv_nsec;
+};
+
+typedef signed int clockid_t;
+
+#define CLOCK_REALTIME 0
+int        clock_gettime(clockid_t clk_id, struct timespec *tp);
 
 #endif
