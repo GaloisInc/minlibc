@@ -6,12 +6,19 @@
  */
 #include <stdio.h>
 #include <errno.h>
+#include <runtime_reqs.h>
 
 int fflush(FILE *stream)
 {
   if((stream == stdin) || (stream == stdout) || (stream == stderr)) {
     return 0;
   } else {
+#ifdef PROFILING
+    if(stream) {
+      profile_flush(stream);
+      return 0;
+    }
+#endif
     errno = EBADF;
     return EOF;
   }

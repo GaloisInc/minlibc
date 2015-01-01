@@ -17,7 +17,15 @@ int vfprintf(FILE *stream, const char *format, va_list ap)
     int r = vsnprintf(buf, sizeof(buf), format, ap);
     runtime_write(r, buf);
     return r;
-  } else {
-    return -1;
   }
+
+#ifdef PROFILING
+  if(stream) {
+    int r = vsnprintf(buf, sizeof(buf), format, ap);
+    profile_write(stream, buf, r);
+    return r;
+  }
+#endif
+
+  return -1;
 }

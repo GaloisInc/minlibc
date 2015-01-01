@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <sys/resource.h>
 #include <sys/time.h>
+#include <stdio.h>
 #include <time.h>
 
 void    runtime_write(size_t len, char *buffer);
@@ -23,5 +24,12 @@ int     runtime_pagesize(void);
 time_t  runtime_time(void);
 int     runtime_gettimeofday(struct timeval *);
 int     runtime_rusage(int who, struct rusage *);
+
+#ifdef PROFILING
+FILE   *profile_fopen(const char *fname, const char *mode);
+void    profile_flush(FILE *pfile);
+void    profile_write(FILE *pfile, void *buffer, int amt);
+void    profile_fclose(FILE *pfile);
+#endif
 
 #endif

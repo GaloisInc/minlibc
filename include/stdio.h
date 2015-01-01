@@ -21,7 +21,7 @@
 #define SEEK_CUR    0x2
 #define SEEK_END    0x3
 
-typedef unsigned long FILE;
+typedef struct FILE FILE;
 typedef unsigned int  pid_t;
 
 extern FILE *stdin;

@@ -7,10 +7,12 @@
 #include <stdio.h>
 #include <errno.h>
 
-FILE *fopen(const char *path __attribute__((unused)),
-            const char *mode __attribute__((unused)))
+FILE *fopen(const char *path, const char *mode)
 {
-  printf("fopen\n");
+#ifdef PROFILING
+  return profile_fopen(path, mode);
+#else
   errno = EACCES;
-  return 0;
+  return NULL;
+#endif
 }

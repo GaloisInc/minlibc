@@ -7,9 +7,15 @@
 #include <stdio.h>
 #include <errno.h>
 
-int fclose(FILE *fp __attribute__((unused)))
+int fclose(FILE *fp)
 {
-  printf("fclose\n");
+#ifdef PROFILING
+  if(fp) {
+    profile_fclose(fp);
+    return 0;
+  }
+#endif
+
   errno = EBADF;
   return EOF;
 }
