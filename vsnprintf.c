@@ -140,6 +140,7 @@ int vsnprintf(char *buf, size_t size, const char *fmt, va_list args)
   int i, base;
   char *str, *end, c;
   const char *s;
+  double fnum;
 
   int flags;          /* flags to number() */
 
@@ -317,6 +318,27 @@ repeat:
         flags |= SIGN;
       case 'u':
         break;
+
+      case 'f':
+        /* this is a pretty crappy way to do this */
+        fnum = va_arg(args, double);
+        num = (unsigned long long)fnum;
+        str = number(str, end, num, 10, field_width, -1, flags);
+        if(str < end) {
+          fnum = fnum - num;
+          if(precision != 0) {
+            *str++ = '.';
+            precision = (precision == -1) ? 10 : precision;
+            while(precision != 0) {
+              fnum *= 10;
+              num   = (unsigned long long)fnum;
+              *str++ = '0' + num;
+              fnum -= num;
+              precision--;
+            }
+          }
+        }
+        continue;
 
       default:
         if (str <= end)
