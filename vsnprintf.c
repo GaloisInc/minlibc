@@ -209,7 +209,7 @@ repeat:
 
     /* get the conversion qualifier */
     qualifier = -1;
-    if (*fmt == 'h' || *fmt == 'l' || *fmt == 'L' || *fmt =='Z') {
+    if (*fmt == 'h' || *fmt == 'l' || *fmt == 'L' || *fmt =='Z' || *fmt =='z') {
       qualifier = *fmt;
       ++fmt;
       if (qualifier == 'l' && *fmt == 'l') {
