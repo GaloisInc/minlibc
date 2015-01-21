@@ -5,6 +5,7 @@
  * terms and conditions.
  */
 #include <unistd.h>
+#include "runtime_reqs.h"
 
 int getpagesize(void)
 {
