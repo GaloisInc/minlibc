@@ -47,6 +47,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <unistd.h>
 #include <stdarg.h>
 #include <fcntl.h>
@@ -1916,5 +1917,7 @@ realloc(void *ptr, size_t size)
 
 void *calloc(size_t n, size_t size)
 {
-  return malloc(n * size);
+  void *ptr = malloc(n * size);
+  bzero(ptr, n * size);
+  return ptr;
 }
