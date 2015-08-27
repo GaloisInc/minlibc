@@ -16,10 +16,22 @@
 #define PROT_NOCACHE            0x8
 #define PROT_READWRITE          (PROT_READ | PROT_WRITE)
 
+#define MAP_SHARED              0x01
+#define MAP_PRIVATE             0x02
+#define MAP_FIXED               0x10
 #define MAP_ANON                0x20
 #define MAP_ANONYMOUS           0x20
-#define MAP_PRIVATE             0x02
 #define MAP_FAILED              ((void *) -1)
+
+#define MS_ASYNC                1
+#define MS_INVALIDATE           2
+#define MS_SYNC                 4
+
+#define MADV_NORMAL             0
+#define MADV_RANDOM             1
+#define MADV_SEQUENTIAL         2
+#define MADV_WILLNEED           3
+#define MADV_DONTNEED           4
 
 void *mmap(void *start, size_t length, int prot, int flags, int fd, off_t off);
 int   munmap(void *start, size_t length);
