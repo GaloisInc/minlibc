@@ -34,4 +34,6 @@ void     *bsearch(const void *, const void *, size_t, size_t,
 int       putenv(char *str);
 int       unsetenv(const char *name);
 
+int       abs(int j);
+
 #endif
