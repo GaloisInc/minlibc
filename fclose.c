@@ -7,7 +7,14 @@
 #include <stdio.h>
 #include <errno.h>
 
-int fclose(FILE *fp)
+#ifdef PROFILING
+#include <runtime_reqs.h>
+#define MUNUSED
+#else
+#define MUNUSED __attribute((unused))
+#endif
+
+int fclose(FILE *fp MUNUSED)
 {
 #ifdef PROFILING
   if(fp) {

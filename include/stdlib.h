@@ -18,8 +18,8 @@ int       atoi(const char *nptr);
 long int  strtol(const char *nptr, char **endptr, int base);
 
 char     *getenv(const char *name);
-void      abort(void);
-void      exit(int status);
+void      abort(void) __attribute__((noreturn));
+void      exit(int status) __attribute__((noreturn));
 
 void     *malloc(size_t size);
 void     *realloc(void *ptr, size_t size);

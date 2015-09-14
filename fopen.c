@@ -7,7 +7,14 @@
 #include <stdio.h>
 #include <errno.h>
 
-FILE *fopen(const char *path, const char *mode)
+#ifdef PROFILING
+#include <runtime_reqs.h>
+#define MUNUSED
+#else
+#define MUNUSED __attribute((unused))
+#endif
+
+FILE *fopen(const char *path MUNUSED, const char *mode MUNUSED)
 {
 #ifdef PROFILING
   return profile_fopen(path, mode);

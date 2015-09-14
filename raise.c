@@ -6,8 +6,10 @@
  */
 #include <signal.h>
 #include <stdio.h>
+#include <errno.h>
 
 int raise(int sig)
 {
-  pabort("Someone called raise! (signal: %d)\n", sig);
+  printf("Someone called raise! (signal: %d)\n", sig);
+  return -ENOSYS;
 }
