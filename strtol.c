@@ -136,3 +136,7 @@ long int strtol(const char *nptr, char **endptr, int base)
   return (acc);
 }
 
+unsigned long long strtoull (const char*__restrict nptr, char **__restrict endptr, int base) {
+    return (unsigned long long) strtol(nptr, endptr, base);
+    // HACK: Hope it won't break things severely before I change to musl
+}
