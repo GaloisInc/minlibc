@@ -37,4 +37,7 @@ int       unsetenv(const char *name);
 
 int       abs(int j);
 
+int rand (void);
+void srand (unsigned);
+
 #endif
