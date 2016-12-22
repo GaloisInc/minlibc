@@ -16,6 +16,7 @@ typedef unsigned long int size_t;
 double    atof(const char *nptr);
 int       atoi(const char *nptr);
 long int  strtol(const char *nptr, char **endptr, int base);
+unsigned long long strtoull (const char *__restrict, char **__restrict, int);
 
 char     *getenv(const char *name);
 void      abort(void) __attribute__((noreturn));
@@ -35,5 +36,8 @@ int       putenv(char *str);
 int       unsetenv(const char *name);
 
 int       abs(int j);
+
+int rand (void);
+void srand (unsigned);
 
 #endif
