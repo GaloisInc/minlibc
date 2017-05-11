@@ -11,8 +11,14 @@
 
 typedef signed long int off_t;
 
-#define O_NONBLOCK    04000
-#define O_RDONLY      0x23
+#define O_RDONLY      0x00000000
+#define O_WRONLY      0x00000001
+#define O_RDWR        0x00000002
+#define O_NONBLOCK    0x00000004
+#define O_APPEND      0x00000008
+#define O_CREAT       0x00000200
+#define O_TRUNC       0x00000400
+#define O_EXCL        0x00000800
 
 #define F_GETFL       3
 #define F_SETFL       4
