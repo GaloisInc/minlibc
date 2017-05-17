@@ -4,16 +4,10 @@
  * Please see the file LICENSE, distributed with this software, for specific
  * terms and conditions.
  */
-#include <stdarg.h>
 #include <stdio.h>
 
-int __fprintf_chk(FILE *stream, int flags, const char *format, ...)
+void __attribute__((noreturn)) __stack_chk_fail(void)
 {
-  va_list args;
-  int res;
-
-  va_start(args, format);
-  res = vfprintf(stream, format, args);
-  va_end(args);
-  return res;
+  printf("Stack smashing detected!\n");
+  exit(-2357);
 }
