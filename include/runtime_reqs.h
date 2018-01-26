@@ -9,8 +9,10 @@
 
 #include <sys/types.h>
 #include <sys/resource.h>
+#include <sys/stat.h>
 #include <sys/time.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <time.h>
 
 void    runtime_write(size_t len, char *buffer);
@@ -24,6 +26,14 @@ int     runtime_pagesize(void);
 time_t  runtime_time(void);
 int     runtime_gettimeofday(struct timeval *);
 int     runtime_rusage(int who, struct rusage *);
+
+#ifdef URANDOM
+#define URANDOM_FD 9001
+int     urandom_open(void);
+int     urandom_stat(struct stat *buf, int check_consumers);
+ssize_t urandom_read(uint8_t *buf, size_t len);
+int     urandom_close(void);
+#endif
 
 #ifdef PROFILING
 FILE   *profile_fopen(const char *fname, const char *mode);

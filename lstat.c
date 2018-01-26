@@ -7,9 +7,21 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-int lstat(const char *path __attribute__((unused)),
-          struct stat *buf __attribute__((unused)))
+#ifdef URANDOM
+#include <runtime_reqs.h>
+#include <string.h>
+#define MUNUSED
+#else
+#define MUNUSED __attribute((unused))
+#endif /* URANDOM */
+
+int lstat(const char *path MUNUSED,
+          struct stat *buf MUNUSED)
 {
-  errno = ENOENT;
+#ifdef URANDOM
+  if(strncmp(path, "/dev/urandom", 13) == 0)
+    return urandom_stat(buf, 0);
+#endif
+
   return -1;
 }
