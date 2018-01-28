@@ -8,11 +8,25 @@
 #include <stdio.h>
 #include <errno.h>
 
-int open(const char *pathname __attribute__((unused)),
-         int flags __attribute__((unused)),
+#ifdef URANDOM
+#include <runtime_reqs.h>
+#include <string.h>
+#define MUNUSED
+#else
+#define MUNUSED __attribute((unused))
+#endif /* URANDOM */
+
+int open(const char *pathname MUNUSED,
+         int flags            MUNUSED,
          ...)
 {
   printf("open\n");
+
+#ifdef URANDOM
+  if(strncmp(pathname, "/dev/urandom", 13) == 0 && (flags & ~O_NONBLOCK) == O_RDONLY)
+    return urandom_open();
+#endif
+
   errno = EACCES;
   return -1;
 }

@@ -7,9 +7,21 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-int fstat(int fd __attribute__((unused)),
-          struct stat *buf __attribute__((unused)))
+#ifdef URANDOM
+#include <runtime_reqs.h>
+#define MUNUSED
+#else
+#define MUNUSED __attribute((unused))
+#endif /* URANDOM */
+
+int fstat(int fd           MUNUSED,
+          struct stat *buf MUNUSED)
 {
+#ifdef URANDOM
+  if(fd == URANDOM_FD)
+    return urandom_stat(buf, 1);
+#endif
+
   errno = EBADF;
   return -1;
 }
